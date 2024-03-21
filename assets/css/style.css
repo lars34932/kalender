@@ -22,6 +22,11 @@ body{
     padding: 2rem;
 }
 
+.header__title{
+    width: 20rem;
+    text-align: center;
+}
+
 .header__button{
     width: 4rem;
     height: 4rem;
@@ -66,5 +71,17 @@ body{
 }
 
 .main__day{
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.day{
+    font-size: 2rem;
+}
+
+.gray {
+    background: gray;
+}
+
+.today {
+    background: #7cad7e;
 }
