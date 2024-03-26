@@ -1,8 +1,8 @@
 const monthYear = document.getElementById("monthYear");
 const days = document.getElementsByClassName("day");
 const boxes = document.getElementsByClassName("main__day");
-let currentDate = new Date();
-let calendarBody = [];
+const dateToday = new Date();
+let currentDate = dateToday;
 
 function getDays(year, month) {
     return new Date(year, month + 1, 0).getDate();
@@ -15,8 +15,11 @@ function title(date) {
     monthYear.innerText = month + ' ' + year;
 }
 
-function makeCalender(date) {
-    calendarBody = [];
+function makeCalender(date, dateToday) {
+    console.log(dateToday);
+
+    let calendarBody = [];
+    
     for (let day of days) {
         day.innerText = '';
     }
@@ -26,7 +29,7 @@ function makeCalender(date) {
         box.classList.remove('today');
     }
 
-    let today = new Date();
+    let today = dateToday;
     let firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
     let daysInMonth = getDays(date.getFullYear(), date.getMonth());
 
@@ -63,17 +66,17 @@ function makeCalender(date) {
 function previousMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
     title(currentDate);
-    makeCalender(currentDate);
+    makeCalender(currentDate, dateToday);
 }
 
 function nextMonth() {
     currentDate.setMonth(currentDate.getMonth() + 1);
     title(currentDate);
-    makeCalender(currentDate);
+    makeCalender(currentDate, dateToday);
 }
 
 document.querySelector('.header__button:nth-of-type(1)').addEventListener('click', previousMonth);
 document.querySelector('.header__button:nth-of-type(2)').addEventListener('click', nextMonth);
 
 title(currentDate);
-makeCalender(currentDate);
+makeCalender(currentDate, dateToday);
